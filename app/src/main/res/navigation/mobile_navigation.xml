@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home"
+
+    >
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.coming.app.fitmax.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home"
+        >
+<!--        <action-->
+<!--            android:id="@+id/action_home_to_move_net"-->
+<!--            app:destination="@id/move_net_tensorflow_fragment"-->
+<!--            app:popUpTo="@id/navigation_home"-->
+<!--            app:popUpToInclusive="true" />-->
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_mission"
+        android:name="com.coming.app.fitmax.ui.mission.MissionFragment"
+        android:label="@string/bottom_tabs_mission"
+        tools:layout="@layout/fragment_mission" />
+    <fragment
+        android:id="@+id/navigation_equiptment"
+        android:name="com.coming.app.fitmax.ui.equiptment.EquiptmentFragment"
+        android:label="@string/bottom_tabs_equiptment"
+        tools:layout="@layout/fragment_equiptment" />
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.coming.app.fitmax.ui.profile.ProfileFragment"
+        android:label="@string/bottom_tabs_mission"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/move_net_tensorflow_fragment"
+        android:name="com.coming.app.fitmax.ui.pose_estimation.PoseEstimationFragment"
+        android:label="PoseEstimationFragment"
+        tools:layout="@layout/fragment_pose_estimation" />
+</navigation>

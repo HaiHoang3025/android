@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_item"
+    android:layout_marginTop="10dp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center">
+        <com.coming.app.fitmax.ui.home.IconItem
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/icon_home" />-->
+<!--        <SurfaceView-->
+<!--            android:id="@+id/surfaceView_item"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="wrap_content"/>-->
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="3"
+        >
+        <TextView
+            android:id="@+id/text_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complete 3 squats exercises"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/text_with"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="with 100 reps" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="end"
+        android:layout_weight="1"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/text_113"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="113" />
+
+        <TextView
+            android:id="@+id/text_fitm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FITM" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_nav.xml"
+    app:startDestination="@id/splashFragment">
+    <!--    nav_graph-->
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.coming.app.fitmax.ui.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+<!--        <action-->
+<!--            android:id="@+id/action_splashFragment_to_poseEstimationFragment"-->
+<!--            app:destination="@id/poseEstimationFragment"-->
+<!--            app:popUpTo="@id/splashFragment"-->
+<!--            app:popUpToInclusive="true" />-->
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/poseEstimationFragment"
+        android:name="com.coming.app.fitmax.ui.pose_estimation.PoseEstimationFragment"
+        android:label="PoseEstimationFragment"
+        tools:layout="@layout/fragment_pose_estimation" />
+
+</navigation>

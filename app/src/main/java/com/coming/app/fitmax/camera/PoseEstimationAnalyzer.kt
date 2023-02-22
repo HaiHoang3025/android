@@ -104,8 +104,8 @@ fun checkIsSquat(person: Person): Boolean {
 //    Log.d("eyeShoulder==>", eyeShoulder.toString())
 //    Log.d("eyeWrist===>", eyeWrist.toString())
 
-
-    if (wristLeftRight <= bodyPartLeftRightShoulder*4/5 ) {
+//    *4/5
+    if (wristLeftRight <= bodyPartLeftRightShoulder) {
         if ( keyPointLeftElbow.y > keyPointLeftWRIST.y && keyPointRightElbow.y > keyPointRightWRIST.y) {
             return true
         }

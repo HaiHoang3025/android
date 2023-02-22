@@ -1,17 +1,11 @@
 package com.coming.app.fitmax.camera
 
-import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
-import android.content.res.Resources.Theme
 import android.graphics.*
 import android.util.Log
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
-import androidx.compose.runtime.*
 import com.coming.app.fitmax.data.BodyPart
 import com.coming.app.fitmax.data.CountSquat
 import com.coming.app.fitmax.data.Person
-import java.lang.reflect.Modifier
 
 
 object VisualizationUtils {
@@ -25,10 +19,11 @@ object VisualizationUtils {
     private val ALPHA_STEP1 = 225 / (FADE_MILLISECONDS / FADE_STEP)
     private var currentAlpha = 0
     private var currentAlpha1 = 0
-    private val PROGRESS_MILLISECONDS: Int = 1000
-    private const val PROGRESS_STEP = 60
-    private val PROGRESS = 180 / (FADE_MILLISECONDS / FADE_STEP)
-    private var progress = 360f
+
+    private var mAnimator: ValueAnimator? = null
+    private  var progress = 360f
+   private var percent1 = 0.2 / 180
+
 
     /** Pair of keypoints to draw lines between.  */
     private var bodyJoints = listOf(
@@ -64,31 +59,18 @@ object VisualizationUtils {
 
     fun sweepAngle(percentagePerson: Float): Float {
         var currentPos = percentagePerson
-        if (percentagePerson > 0.8) {
-            currentPos = 0.8F
+        if (percentagePerson > 1) {
+            currentPos = 1F
         }
-        if (percentagePerson < 0.6) {
-            currentPos = 0.6f
+        if (percentagePerson < 0.5) {
+            currentPos = 0.5f
         }
-        val angle = (0.8 - currentPos)
-        var percent = 0.2 / 180
+        val angle = (1f - currentPos)
+        var percent = 0.5 /180
         val size = (angle / percent)
-        return (360 - size).toFloat()
+        return  360- size.toFloat()
     }
 
-    fun sweepAngle1(percentagePerson: Float): Float {
-        var currentPos = percentagePerson
-        if (percentagePerson > 0.8) {
-            currentPos = 0.8F
-        }
-        if (percentagePerson < 0.6) {
-            currentPos = 0.6f
-        }
-        val angle = (0.8 - currentPos)
-        var percent = 0.2 / 180
-        val size = (angle / percent)
-        return (360 - size).toFloat()
-    }
 
     fun alphaOpacity(alpla: Int, alphaStep: Int): Int {
         var alpha = 0
@@ -147,6 +129,7 @@ object VisualizationUtils {
         val rectf =
             RectF((width / 2) - 100f, height - 400f, (width / 2).toFloat() + 100f, height - 200f)
 
+
         val checkScore = person.keyPoints.toList().all { it.score > 0.3 }
         person.keyPoints.forEach { point ->
             originalSizeCanvas.drawCircle(
@@ -154,17 +137,29 @@ object VisualizationUtils {
             )
         }
 
-        originalSizeCanvas.drawText(
-            "progress bar:${sweepAngle(percentagePerson.toFloat())}",
-            10f,
-            250f,
-            paintText
-        )
+
+//        originalSizeCanvas.drawText(
+//            "progress bar:${sweepAngle(percentagePerson.toFloat())}",
+//            10f,
+//            250f,
+//            paintText
+//        )
+//        originalSizeCanvas.drawArc(rectf,
+//            270f,
+//            sweepAngle(percentagePerson.toFloat()),
+//            false,
+//            Paint().apply {
+//                color = Color.RED
+//                strokeWidth = 40f
+//                isAntiAlias = true
+//                style = Paint.Style.STROKE
+//                strokeCap = Paint.Cap.ROUND
+////                alpha = alphaOpacity(currentAlpha1, 225)
+//            })
 
 
 
         if (currentAlpha != 0 && currentAlpha1 != 0) {
-            sweepAngle1(percentagePerson.toFloat())
             originalSizeCanvas.drawRoundRect(
                 (width / 2) - 150f,
                 height - 450f,
@@ -190,7 +185,7 @@ object VisualizationUtils {
 
             originalSizeCanvas.drawArc(rectf,
                 270f,
-                sweepAngle1(progress),
+                sweepAngle(percentagePerson.toFloat()),
 //                sweepAngle(percentagePerson.toFloat()),
                 false,
                 Paint().apply {
